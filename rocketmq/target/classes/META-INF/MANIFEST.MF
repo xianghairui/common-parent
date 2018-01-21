@@ -1,0 +1,12 @@
+Manifest-Version: 1.0
+Built-By: hairui
+Class-Path: lib/rocketmq-client-4.1.0-incubating.jar lib/rocketmq-comm
+ on-4.1.0-incubating.jar lib/rocketmq-remoting-4.1.0-incubating.jar li
+ b/fastjson-1.2.29.jar lib/netty-all-4.0.36.Final.jar lib/commons-lang
+ 3-3.4.jar lib/slf4j-api-1.7.25.jar lib/logback-core-1.2.3.jar lib/log
+ back-access-1.2.3.jar lib/logback-classic-1.2.3.jar lib/logback-ext-s
+ pring-0.1.4.jar
+Build-Jdk: 1.8.0_121
+Created-By: Maven Integration for Eclipse
+Main-Class: com.airlead.sms.gateway.Main
+

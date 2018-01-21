@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd ">
+	
+	<!-- 扫描包,将标注Spring注解的类自动转化Bean -->
+	<context:annotation-config />
+	<context:component-scan base-package="com.xiang.demo.simple"></context:component-scan>
+		
+	<!-- 
+	memcached 配置属性说明(http://www.360doc.com/content/15/0326/15/11253639_458220411.shtml)
+	
+	Servers 
+		一个字符串，包括有空格或逗号的主机或IP地址与端口
+	Daemon  
+		设置IO线程的守护进程（默认true）状态
+	FailureMode
+		设置故障模式（取消、重新分配，重试）,默认是重新分配
+	HashAlg
+		设置哈希算法（见net.spy.memcached.HashAlgorithm的值）
+	InitialObservers
+		设置初始连接的观察者（观察者初始连接）
+	LocatorType
+		设置定位器类型（ARRAY_MOD, CONSISTENT）, 默认是ARRAY_MOD
+	MaxReconnectDelay
+		设置最大的连接延迟
+	OpFact
+	 	设置操作工厂
+	OpQueueFactory
+	 	设置操作列工厂
+	OpTimeOut
+		以毫秒为单位设置默认的操作时间
+	Protocol
+		指定要使用的协议（BINARY, TEXT）, 默认是TEXT
+	ReadBufferSize
+	 	设置读队列工厂
+	ShouldOptimize
+		如果默认操作优化是不可取的， 设置为false(默认为false) 
+	Transcoder
+		设置默认的转码器（默认以net.syp.memcached.transcoders.SerializingTranscoder）
+	UseNagleAlgorithm
+		如果你想使用Nagle算法，设置true
+	WriteOpQueueFactory
+		设置队列工厂
+	AuthDescriptor
+		设置authDescriptor, 在新的连接上使用身份验证
+	-->
+ 	<bean id="memcachedClient" class="net.spy.memcached.spring.MemcachedClientFactoryBean">
+		<property name="servers" value="127.0.0.1:11211" />
+		<property name="protocol" value="BINARY"></property>
+		<property name="transcoder">
+			<bean class="net.spy.memcached.transcoders.SerializingTranscoder">
+				<property name="compressionThreshold" value="1024"></property>
+			</bean>
+		</property>
+		<property name="opTimeout" value="1000" />
+		<property name="timeoutExceptionThreshold" value="1998" />
+		<property name="hashAlg" ref="KETAMA_HASH" />
+		<property name="locatorType" value="CONSISTENT" />
+		<property name="failureMode" value="Redistribute" />
+		<property name="useNagleAlgorithm" value="false" />
+	</bean>
+	
+	 <!--   
+	        枚举类型要想注入到类中，一定要先使用org.springframework.beans.factory.config.FieldRetrievingFactoryBean类将枚举类型进行转换  
+	        将DefaultHashAlgorithm.KETAMA_HASH转换为KETAMA_HASH这个bean，  
+	        然后在要注入的bean中使用<property name="hashAlg" ref="KETAMA_HASH" />引用即可。  
+     -->  
+    <bean id="KETAMA_HASH" class="org.springframework.beans.factory.config.FieldRetrievingFactoryBean">  
+        <property name="staticField" value="net.spy.memcached.DefaultHashAlgorithm.KETAMA_HASH" />  
+    </bean>  
+	
+	<import resource="spring-db.xml"/>
+
+</beans>

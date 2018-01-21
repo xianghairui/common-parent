@@ -1,0 +1,303 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.xiang.demo</groupId>
+	<artifactId>common-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>GitHub </name>
+	<description>一些工具使用demo，相海瑞</description>
+
+	<properties>
+		<springframework.version>4.3.8.RELEASE</springframework.version>
+		<mybatis.version>3.4.1</mybatis.version>
+		<mybatis-spring.version>1.3.1</mybatis-spring.version>
+		<mysql.version>5.1.40</mysql.version>
+		<junit.version>4.12</junit.version>
+		<druid.version>1.0.28</druid.version>
+		<jackson.version>2.8.8</jackson.version>
+		<slf4j.version>1.7.25</slf4j.version>
+		<logback.version>1.2.3</logback.version>
+		<zookeeper.version>3.4.9</zookeeper.version>
+		<jdk.version>1.8</jdk.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!--web -->
+			<dependency>
+				<groupId>javax.servlet</groupId>
+				<artifactId>servlet-api</artifactId>
+				<version>2.5</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>javax.servlet.jsp-api</artifactId>
+				<version>2.3.1</version>
+				<scope>provided</scope>
+			</dependency>
+			<dependency>
+				<groupId>javax.servlet.jsp.jstl</groupId>
+				<artifactId>javax.servlet.jsp.jstl-api</artifactId>
+				<version>1.2.1</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.ws.rs</groupId>
+				<artifactId>javax.ws.rs-api</artifactId>
+				<version>2.0</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.websocket</groupId>
+				<artifactId>javax.websocket-api</artifactId>
+				<version>1.0</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.annotation</groupId>
+				<artifactId>javax.annotation-api</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.transaction</groupId>
+				<artifactId>javax.transaction-api</artifactId>
+				<version>1.2</version>
+			</dependency>
+
+			<!-- Spring begin -->
+			<!-- Maven管理Spring项目在引入BOM之后时，可统一版本，在引入其他Spring依赖时，都无需指定版本 -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>spring-framework-bom</artifactId>
+				<version>${springframework.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+
+			<!-- spring-oxm依赖 -->
+			<dependency>
+				<groupId>org.codehaus.castor</groupId>
+				<artifactId>castor-xml</artifactId>
+				<version>1.4.1</version>
+			</dependency>
+			<!-- spring-json依赖 -->
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-core</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.fasterxml.jackson.core</groupId>
+				<artifactId>jackson-databind</artifactId>
+				<version>${jackson.version}</version>
+			</dependency>
+			<!-- spring-aop依赖 -->
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjweaver</artifactId>
+				<version>1.8.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>1.8.2</version>
+			</dependency>
+			<!-- Spring end -->
+
+			<!-- mybatis begin -->
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis</artifactId>
+				<version>${mybatis.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.mybatis</groupId>
+				<artifactId>mybatis-spring</artifactId>
+				<version>${mybatis-spring.version}</version>
+			</dependency>
+			<!-- mybatis end -->
+
+			<!--mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+			<!--druid -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>1.0.28</version>
+			</dependency>
+
+			<!-- logback begin -->
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>slf4j-api</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<!-- jcl-over-slf4j是用来把Spring源代码中大量使用到的commons-logging替换成slf4j，只有在添加了这个依赖之后才能看到Spring框架本身打印的日志 -->
+			<dependency>
+				<groupId>org.slf4j</groupId>
+				<artifactId>jcl-over-slf4j</artifactId>
+				<version>${slf4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-core</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-access</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>ch.qos.logback</groupId>
+				<artifactId>logback-classic</artifactId>
+				<version>${logback.version}</version>
+			</dependency>
+			<!-- logback-ext-spring是由官方提供的对Spring的支持 -->
+			<dependency>
+				<groupId>org.logback-extensions</groupId>
+				<artifactId>logback-ext-spring</artifactId>
+				<version>0.1.4</version>
+			</dependency>
+			<!-- logback end -->
+
+			<!-- junit begin -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<!-- junit end -->
+
+			<!-- zookeeper begin -->
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper.version}</version>
+			</dependency>
+			<!-- zookeeper end -->
+
+
+			<!-- model -->
+			<dependency>
+				<groupId>com.xiang.demo</groupId>
+				<artifactId>reids</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+
+			<!-- java mail begin -->
+			<dependency>
+				<groupId>javax.mail</groupId>
+				<artifactId>javax.mail-api</artifactId>
+				<version>1.5.6</version>
+			</dependency>
+			<dependency>
+				<groupId>com.sun.mail</groupId>
+				<artifactId>javax.mail</artifactId>
+				<version>1.5.6</version>
+			</dependency>
+			<dependency>
+				<groupId>javax.activation</groupId>
+				<artifactId>activation</artifactId>
+				<version>1.1.1</version>
+			</dependency>
+			<!-- java mail end -->
+
+			<!-- rocketmq begin -->
+			<dependency>
+				<groupId>org.apache.rocketmq</groupId>
+				<artifactId>rocketmq-all</artifactId>
+				<version>4.1.0-incubating</version>
+				<type>pom</type>
+			</dependency>
+			<!-- rocketmq end -->
+		</dependencies>
+	</dependencyManagement>
+
+	<!-- 另外一种激活方式 -->
+	<!-- <profiles> <profile> <id>jdk-1.8</id> <activation> <activeByDefault>true</activeByDefault> <jdk>1.8</jdk> </activation> <properties> <maven.compiler.source>1.8</maven.compiler.source> 
+		<maven.compiler.target>1.8</maven.compiler.target> <maven.compiler.compilerVersion>1.8</maven.compiler.compilerVersion> </properties> </profile> </profiles> -->
+	<build>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<configuration>
+						<source>${jdk.version}</source>
+						<target>${jdk.version}</target>
+						<encoding>UTF-8</encoding>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.tomcat.maven</groupId>
+					<artifactId>tomcat7-maven-plugin</artifactId>
+					<version>2.2</version>
+					<configuration>
+						<url>http://localhost:8080/manager/text</url>
+						<username>username</username>
+						<password>password</password>
+						<path>/${project.artifactId}</path>
+					</configuration>
+				</plugin>
+				<!-- <plugin> <groupId>org.apache.maven.plugins</groupId> <artifactId>maven-shade-plugin</artifactId> <configuration> </configuration> <executions> 
+					<execution> <phase>package</phase> <goals> <goal>shade</goal> </goals> <configuration> <transformers> <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"> 
+					<mainClass>com.airlead.sms.gateway.Main</mainClass> </transformer> <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer"> 
+					<resource>META-INF/spring.handlers</resource> </transformer> <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer"> 
+					<resource>META-INF/spring.schemas</resource> </transformer> </transformers> </configuration> </execution> </executions> </plugin> -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-jar-plugin</artifactId>
+					<version>2.6</version>
+					<configuration>
+						<archive>
+							<manifest>
+								<addClasspath>true</addClasspath>
+								<classpathPrefix>lib/</classpathPrefix>
+								<mainClass>com.airlead.sms.gateway.Main</mainClass>
+							</manifest>
+						</archive>
+					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-dependency-plugin</artifactId>
+					<version>2.10</version>
+					<executions>
+						<execution>
+							<id>copy-dependencies</id>
+							<phase>package</phase>
+							<goals>
+								<goal>copy-dependencies</goal>
+							</goals>
+							<configuration>
+								<outputDirectory>${project.build.directory}/lib</outputDirectory>
+							</configuration>
+						</execution>
+					</executions>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+
+	<modules>
+		<module>simple-web</module>
+		<module>simple-core</module>
+		<module>java-core</module>
+		<module>java-demo</module>
+		<module>redis</module>
+		<module>memcached</module>
+		<module>zookeeper</module>
+		<module>rocketmq</module>
+	</modules>
+</project>
