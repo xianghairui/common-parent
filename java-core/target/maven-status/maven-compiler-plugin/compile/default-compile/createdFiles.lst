@@ -1,5 +1,10 @@
 com\xiang\demo\model\RefundWait.class
+com\xiang\model\TblUserExample$Criteria.class
+com\xiang\model\TblUserExample.class
+com\xiang\demo\model\RefundWaitExample$Criterion.class
+com\xiang\model\TblUserExample$Criterion.class
+com\xiang\model\TblUser.class
 com\xiang\demo\model\RefundWaitExample$GeneratedCriteria.class
+com\xiang\model\TblUserExample$GeneratedCriteria.class
 com\xiang\demo\model\RefundWaitExample$Criteria.class
 com\xiang\demo\model\RefundWaitExample.class
-com\xiang\demo\model\RefundWaitExample$Criterion.class
