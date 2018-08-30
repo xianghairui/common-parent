@@ -17,7 +17,7 @@ public class DateParseFormatExample {
 		System.out.println("Default format of LocalDate=" + date);
 		
 		System.out.println(date.format(DateTimeFormatter.ofPattern("d::MMM::uuuu")));
-		System.out.println(date.format(DateTimeFormatter.ofPattern("MMMdHHmmss")));
+		System.out.println(date.format(DateTimeFormatter.ofPattern("MMMddHHmmss")));
 		
 	}
 

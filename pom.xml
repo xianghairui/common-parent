@@ -221,6 +221,12 @@
 				<type>pom</type>
 			</dependency>
 			<!-- rocketmq end -->
+			<dependency>
+				<groupId>com.jd.security</groupId>
+				<artifactId>aces-springclient</artifactId>
+				<version>1.0.1-SNAPSHOT</version>
+			</dependency>
+
 		</dependencies>
 	</dependencyManagement>
 

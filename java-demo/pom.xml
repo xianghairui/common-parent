@@ -108,6 +108,17 @@
 			<artifactId>javax.mail</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.jd.security</groupId>
+			<artifactId>aces-springclient</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.xiang.demo</groupId>
+			<artifactId>java-core</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 	</dependencies>
 	
 	<build>
